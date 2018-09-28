@@ -4,8 +4,6 @@
 * Auteur: Wassim Khene
 *******************************************/
 
-// TEST AJOUT JULES
-
 #include "utilisateur.h"
 
 // Constructeurs
