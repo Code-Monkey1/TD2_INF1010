@@ -16,6 +16,8 @@ int main() {
 
 	cout << "\t \tBienvenue sur PolyCount " << endl << " *****************************************************" << endl;
 
+
+	
 	// Initialisation des depenses
 	Depense* d1 = new Depense("d1", 12, "IGA");
 	Depense* d2 = new Depense("d2", 11, "Provigo");
@@ -59,5 +61,6 @@ int main() {
 
 	// TODO: Terminez le programme correctement
 
+	system("pause");
 	return 0;
 }
