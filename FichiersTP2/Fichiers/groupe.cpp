@@ -8,35 +8,42 @@
 
 // Constructeurs
 Groupe::Groupe() :
+	//nouveau
+	vector<Depense*> depenses_,
+	vector<Utilisateur*> utilisateurs_,
+	vector<Transfert*> transferts_,
+	vector<double> comptes_,
+	//ancien
 	nom_(""),
 	nombreDepenses_(0),
 	nombreUtilisateurs_(0),
 	tailleTabUtilisateurs_(5),
 	tailleTabDepenses_(10),
-	depenses_(new Depense*[tailleTabDepenses_]),
-	utilisateurs_(new Utilisateur*[tailleTabUtilisateurs_]),
-	comptes_(new double[nombreUtilisateurs_]),
-	transferts_(new Transfert*[nombreUtilisateurs_]),
 	nombreTransferts_(0)
 {
 }
 
 Groupe::Groupe(const string& nom, unsigned int tailleTabDepenses, unsigned int tailleTabUtilisateurs) :
+	//nouveau
+	vector<Depense*> depenses_,
+	vector<Utilisateur*> utilisateurs_,
+	vector<Transfert*> transferts_,
+	vector<double> comptes_,
+	//ancien
 	nom_(nom),
 	nombreDepenses_(0),
 	nombreUtilisateurs_(0),
 	tailleTabUtilisateurs_(tailleTabUtilisateurs),
 	tailleTabDepenses_(tailleTabDepenses),
-	depenses_(new Depense*[tailleTabDepenses]),
-	utilisateurs_(new Utilisateur*[tailleTabUtilisateurs]),
-	comptes_(new double[nombreUtilisateurs_]),
-	transferts_(new Transfert*[nombreUtilisateurs_]),
 	nombreTransferts_(0)
 {
 }
 
 
 Groupe::~Groupe() {
+	//nouveau
+	
+	//ancien
 	for (int i = 0; i < nombreTransferts_; i++) {
 		delete transferts_[i];
 		transferts_[i] = nullptr;

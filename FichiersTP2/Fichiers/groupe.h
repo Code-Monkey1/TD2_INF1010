@@ -44,15 +44,15 @@ public:
 private:
 	string nom_;
 	// Remplacer les doubles pointeurs par des vecteurs
-	Utilisateur** utilisateurs_;
+	vector<Utilisateur*> utilisateurs_;
 	unsigned int nombreUtilisateurs_;
 	unsigned int tailleTabUtilisateurs_;
-	Depense** depenses_;
+	vector<Depense*> depenses_;
 	unsigned int nombreDepenses_;
 	unsigned int tailleTabDepenses_;
-	Transfert** transferts_;
+	vector<Transfert*> transferts_;
 	unsigned int nombreTransferts_;
-	double* comptes_;
+	vector<double> comptes_;
 
 };
 
