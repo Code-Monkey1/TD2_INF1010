@@ -9,7 +9,7 @@
 
 #include <string>
 #include <iostream>
-
+#include <vector>
 #include "depense.h"
 
 using namespace std;
@@ -19,7 +19,7 @@ public:
 	// Constructeurs
 	Utilisateur();
 	Utilisateur(const string& nom);
-	// TODO: Ajouter un constructeur par copie
+	Utilisateur(const Utilisateur& utilisateur);
 
 	// Destructeur
 	~Utilisateur();
@@ -28,6 +28,7 @@ public:
 	string getNom() const;
 	unsigned int getNombreDepense() const;
 	double getTotalDepenses() const;
+	vector< Depense* > getDepenses() const;
 
 	// Methodes de modification
 	void setNom(const string& nom);
@@ -35,15 +36,13 @@ public:
 	// TODO: Ajouter un operateur += et =
 	void ajouterDepense(Depense* uneDepense);
 	
-	// TODO: Remplacer par une surcharge de l'operateur <<
-	void afficherUtilisateur() const;
+	// Surcharge de l'operateur <<
+	friend ostream& operator<<(ostream& os, const Utilisateur& utilisateur);
 
 private:
 	string nom_;
-	// TODO: Remplacer depenses_ par un vecteur
-	unsigned int tailleTabDepense_;
 	unsigned int nombreDepenses_;
-	Depense ** depenses_;
+	vector< Depense* > depenses_;
 
 };
 #endif

@@ -8,6 +8,7 @@
 #define GROUPE_H
 
 #include <string>
+#include <vector>
 #include "transfert.h"
 
 using namespace std;

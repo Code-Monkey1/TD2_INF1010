@@ -33,7 +33,6 @@ public:
 	void setLieu(string lieu);
 
 	// Surcharge de l'operateur =
-
 	Depense& operator=(const Depense& depense);
 
 	// Surcharge de l'operateur <<
