@@ -84,7 +84,7 @@ ostream& operator<<(ostream& os, const Utilisateur& utilisateur)
 	os << "Utilisateur : " << utilisateur.getNom() << " a depense pour un total de : " << utilisateur.getTotalDepenses() << endl
 		<< "\t Liste de depenses : " << endl;
 	for (unsigned int i = 0; i < utilisateur.nombreDepenses_; i++) {
-		cout << "\t\t" << utilisateur.depenses_[i];
+		cout << "\t\t" << (*utilisateur.depenses_[i]);
 	}
 	return os;
 }
