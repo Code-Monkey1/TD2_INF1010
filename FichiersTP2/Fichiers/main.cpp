@@ -44,6 +44,15 @@ int main() {
 	*u5 = *u1;
 	u5->setNom("Christian");
 
+	*u2 += d2;
+	(*u3 += d1) += d3;
+	
+	Transfert transfert1 = Transfert(2.3, u2, u3);
+	
+	cout << *u2 << *u3 << endl << transfert1;
+
+
+	/*
 	// Initialisation du groupe
 	Groupe* groupe = new Groupe("vacances");
 
@@ -58,7 +67,7 @@ int main() {
 	cout << *groupe;
 
 	// TODO: Terminez le programme correctement
-
+	*/
 	system("pause");
 	return 0;
 }
