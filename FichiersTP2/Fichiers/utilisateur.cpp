@@ -55,10 +55,27 @@ void Utilisateur::setNom(const string& nom) {
 	nom_ = nom;
 }
 
-void Utilisateur::ajouterDepense(Depense* depense) {
-	
-	depenses_.push_back(depense);
+Utilisateur & Utilisateur::operator+=(Depense* pointeurDepense)
+{
 	nombreDepenses_++;
+	depenses_.push_back(pointeurDepense);
+	return *this;
+}
+
+Utilisateur & Utilisateur::operator=(const Utilisateur & utilisateur)
+{
+	if (this != &utilisateur) {
+
+		nom_ = utilisateur.nom_;
+		nombreDepenses_ = utilisateur.nombreDepenses_;
+		for (unsigned int i = 0; i < depenses_.size(); i++)
+		{
+			delete depenses_[i];
+			depenses_[i] = nullptr;
+		}
+		depenses_ = utilisateur.depenses_;
+	}
+	return *this;
 }
 
 // Methode d'affichage
