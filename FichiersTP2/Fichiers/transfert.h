@@ -23,13 +23,13 @@ public:
 	double getMontant() const;
 
 
-	// Méthodes d'affichage
+	// Méthodes de modification
 	void setMontant(double montant);
 	void setExpediteur(Utilisateur* expediteur);
 	void setReceveur(Utilisateur* receveur);
 
-	// TODO: Remplacer par une surcharge de l'operateur <<
-	void afficherTransfert() const;
+	// Surcharge de l'operateur << pour afficher.
+	friend ostream& operator<<(ostream& os, const Transfert& transfert);
 
 private:
 	double montant_;
