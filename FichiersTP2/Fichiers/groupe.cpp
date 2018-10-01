@@ -66,7 +66,7 @@ void Groupe::setNom(const string& nom) {
 
 // Methodes d'ajout
 
-Groupe & Groupe::operator+=(Utilisateur * ptrNouvUtilisateur)
+Groupe& Groupe::operator+=(Utilisateur *ptrNouvUtilisateur)
 {
 	nombreUtilisateurs_++;
 	utilisateurs_.push_back(ptrNouvUtilisateur);
@@ -79,7 +79,7 @@ Groupe & Groupe::ajouterDepense(Depense* ptrNouvDepense, Utilisateur* ptrUtilisa
 	nombreDepenses_++;
 	depenses_.push_back(ptrNouvDepense);
 	//Ajout dépense à l'utilisateur.
-	ptrUtilisateur += ptrNouvDepense;
+	(*ptrUtilisateur)+=(ptrNouvDepense);
 	//Retourne le groupe.
 	return *this;
 }
