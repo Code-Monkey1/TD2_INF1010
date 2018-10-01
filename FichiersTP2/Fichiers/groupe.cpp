@@ -130,7 +130,7 @@ ostream & operator<<(ostream & os, const Groupe & groupe)
 {
 	os << "L'evenement " << groupe.getNom() << " a coute un total de " << groupe.getTotalDepenses() << " :  \n\n";
 	for (int i = 0; i < groupe.nombreUtilisateurs_; i++) {
-		os << groupe.utilisateurs_[i];
+		os << (*groupe.utilisateurs_[i]);
 	}
 	os << endl;
 
@@ -138,11 +138,11 @@ ostream & operator<<(ostream & os, const Groupe & groupe)
 		os << "Les transferts suivants ont ete realises pour equilibrer  : " << endl;
 		for (int i = 0; i < groupe.nombreTransferts_; i++) {
 			os << "\t";
-			os << groupe.transferts_[i];
+			os << (*groupe.transferts_[i]);
 		}
 	}
 	else {
-		os << "Les comptes ne sont pas equilibres" << endl << endl;
+		os <<"Les comptes ne sont pas equilibres" << endl << endl;
 	}
 	os << endl;
 
