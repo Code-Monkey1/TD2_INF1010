@@ -50,8 +50,10 @@ int main() {
 	// Ajout des utilisateurs et des depenses au groupe
 	((((*groupe += u1) += u2) += u3) += u4) += u5;
 
-	groupe->ajouterDepense(d1, u1).ajouterDepense(d2, u1).ajouterDepense(d3, u2).ajouterDepense(d4, u3).ajouterDepense(d5, u4)
-		.ajouterDepense(d6, u5).ajouterDepense(d7, u3).ajouterDepense(d8, u4);
+	/*groupe->ajouterDepense(d1, u1).ajouterDepense(d2, u1).ajouterDepense(d3, u2).ajouterDepense(d4, u3).ajouterDepense(d5, u4)
+		.ajouterDepense(d6, u5).ajouterDepense(d7, u3).ajouterDepense(d8, u4);*/
+	
+	
 	cout << *groupe;
 	// Equilibrage des comptes
 	groupe->equilibrerComptes();

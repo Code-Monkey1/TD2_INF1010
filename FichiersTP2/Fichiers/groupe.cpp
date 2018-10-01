@@ -1,7 +1,7 @@
 /********************************************
 * Titre: Travail pratique #2 - groupe.cpp
-* Date: 16 septembre 2018
-* Auteur: Wassim Khene
+* Date: 2 octobre 2018
+* Auteurs: Raphael Geoffrion et Jules Lefebvre
 *******************************************/
 
 #include "groupe.h"
@@ -9,10 +9,10 @@
 // Constructeurs
 Groupe::Groupe() :
 	//nouveau
-	vector<Depense*> depenses_,
-	vector<Utilisateur*> utilisateurs_,
-	vector<Transfert*> transferts_,
-	vector<double> comptes_,
+	depenses_(),
+	utilisateurs_(),
+	transferts_(),
+	comptes_(),
 	//ancien
 	nom_(""),
 	nombreDepenses_(0),
@@ -23,10 +23,10 @@ Groupe::Groupe() :
 
 Groupe::Groupe(const string& nom) :
 	//nouveau
-	vector<Depense*> depenses_,
-	vector<Utilisateur*> utilisateurs_,
-	vector<Transfert*> transferts_,
-	vector<double> comptes_,
+	depenses_(),
+	utilisateurs_(),
+	transferts_(),
+	comptes_(),
 	//ancien
 	nom_(nom),
 	nombreDepenses_(0),
@@ -74,12 +74,12 @@ Groupe & Groupe::operator+=(Utilisateur * ptrNouvUtilisateur)
 }
 
 
-void Groupe::ajouterDepense(Depense* ptrNouvDepense, Utilisateur* ptrUtilisateur) {
+Groupe & Groupe::ajouterDepense(Depense* ptrNouvDepense, Utilisateur* ptrUtilisateur) {
 	//Ajout dépense au groupe.
 	nombreDepenses_++;
 	depenses_.push_back(ptrNouvDepense);
 	//Ajout dépense à l'utilisateur.
-	ptrUtilisateur += (ptrNouvDepense);
+	ptrUtilisateur += ptrNouvDepense;
 	//Retourne le groupe.
 	return *this;
 }
@@ -142,17 +142,17 @@ void Groupe::equilibrerComptes() {
 
 ostream & operator<<(ostream & os, const Groupe & groupe)
 {
-	os << "L'evenement " << nom_ << " a coute un total de " << groupe.getTotalDepenses << " :  \n\n";
-	for (int i = 0; i < nombreUtilisateurs_; i++) {
-		os << utilisateurs_[i];
+	os << "L'evenement " << groupe.getNom() << " a coute un total de " << groupe.getTotalDepenses << " :  \n\n";
+	for (int i = 0; i < groupe.nombreUtilisateurs_; i++) {
+		os << groupe.utilisateurs_[i];
 	}
 	os << endl;
 
-	if (nombreTransferts_ != 0) {
+	if (groupe.nombreTransferts_ != 0) {
 		os << "Les transferts suivants ont ete realises pour equilibrer  : " << endl;
-		for (int i = 0; i < nombreTransferts_; i++) {
+		for (int i = 0; i < groupe.nombreTransferts_; i++) {
 			os << "\t";
-			os << transferts_[i];
+			os << groupe.transferts_[i];
 		}
 	}
 	else {

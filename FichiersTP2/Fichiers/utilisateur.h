@@ -1,7 +1,7 @@
 /********************************************
 * Titre: Travail pratique #2 - utilisateur.h
-* Date: 16 septembre 2018
-* Auteur: Wassim Khene
+* Date: 2 octobre 2018
+* Auteurs: Raphael Geoffrion et Jules Lefebvre
 *******************************************/
 
 #ifndef UTILISATEUR_H

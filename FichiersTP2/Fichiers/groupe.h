@@ -1,7 +1,7 @@
 /********************************************
 * Titre: Travail pratique #2 - groupe.h
-* Date: 16 septembre 2018
-* Auteur: Wassim Khene
+* Date: 2 octobre 2018
+* Auteurs: Raphael Geoffrion et Jules Lefebvre
 *******************************************/
 
 #ifndef GROUPE_H
@@ -34,7 +34,7 @@ public:
 	// Surcharge d'operateur +=. Permet d'ajouter un utilisateur au groupe et de renvoyer une référence et de renvoyer une référence vers le groupe.
 	Groupe& operator+=(Utilisateur* ptrNouvUtilisateur);
 	
-	void ajouterDepense(Depense* ptrNouvDepense, Utilisateur* ptrUtilisateur);
+	Groupe& ajouterDepense(Depense* ptrNouvDepense, Utilisateur* ptrUtilisateur);
 	
 
 	// Methodes de calcul
