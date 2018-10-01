@@ -128,7 +128,7 @@ void Groupe::equilibrerComptes() {
 
 ostream & operator<<(ostream & os, const Groupe & groupe)
 {
-	os << "L'evenement " << groupe.getNom() << " a coute un total de " << groupe.getTotalDepenses << " :  \n\n";
+	os << "L'evenement " << groupe.getNom() << " a coute un total de " << groupe.getTotalDepenses() << " :  \n\n";
 	for (int i = 0; i < groupe.nombreUtilisateurs_; i++) {
 		os << groupe.utilisateurs_[i];
 	}
@@ -145,4 +145,6 @@ ostream & operator<<(ostream & os, const Groupe & groupe)
 		os << "Les comptes ne sont pas equilibres" << endl << endl;
 	}
 	os << endl;
+	
+	return os;
 }
