@@ -17,13 +17,11 @@ Groupe::Groupe() :
 	nom_(""),
 	nombreDepenses_(0),
 	nombreUtilisateurs_(0),
-	tailleTabUtilisateurs_(5),
-	tailleTabDepenses_(10),
 	nombreTransferts_(0)
 {
 }
 
-Groupe::Groupe(const string& nom, unsigned int tailleTabDepenses, unsigned int tailleTabUtilisateurs) :
+Groupe::Groupe(const string& nom) :
 	//nouveau
 	vector<Depense*> depenses_,
 	vector<Utilisateur*> utilisateurs_,
@@ -33,31 +31,12 @@ Groupe::Groupe(const string& nom, unsigned int tailleTabDepenses, unsigned int t
 	nom_(nom),
 	nombreDepenses_(0),
 	nombreUtilisateurs_(0),
-	tailleTabUtilisateurs_(tailleTabUtilisateurs),
-	tailleTabDepenses_(tailleTabDepenses),
 	nombreTransferts_(0)
 {
 }
 
 
 Groupe::~Groupe() {
-	//nouveau
-	
-	//ancien
-	for (int i = 0; i < nombreTransferts_; i++) {
-		delete transferts_[i];
-		transferts_[i] = nullptr;
-	}
-	delete[] transferts_;
-	transferts_ = nullptr;
-
-	delete[] depenses_;
-	depenses_ = nullptr;
-
-
-	delete[] utilisateurs_;
-	utilisateurs_ = nullptr;
-
 }
 
 
@@ -83,41 +62,26 @@ void Groupe::setNom(const string& nom) {
 	nom_ = nom;
 }
 
+
+
 // Methodes d'ajout
-void Groupe::ajouterDepense(Depense* depense, Utilisateur* utilisateur) {
-	if (nombreDepenses_ >= tailleTabDepenses_) {
 
-		tailleTabDepenses_ *= 2;
-
-		Depense** listeTemp = new Depense*[tailleTabDepenses_];
-
-		for (unsigned int i = 0; i < nombreDepenses_; i++) {
-			listeTemp[i] = depenses_[i];
-		}
-		delete[] depenses_;
-
-		depenses_ = listeTemp;
-	}
-
-	depenses_[nombreDepenses_++] = depense;
-	utilisateur->ajouterDepense(depense);
-
+Groupe & Groupe::operator+=(Utilisateur * ptrNouvUtilisateur)
+{
+	nombreUtilisateurs_++;
+	utilisateurs_.push_back(ptrNouvUtilisateur);
+	return *this;
 }
 
-void Groupe::ajouterUtilisateur(Utilisateur* unUtilisateur) {
-	if (nombreUtilisateurs_ >= tailleTabUtilisateurs_) {
-		tailleTabUtilisateurs_ *= 2;
 
-		Utilisateur** listeTemp = new Utilisateur*[tailleTabUtilisateurs_];
-
-		for (unsigned int i = 0; i < nombreUtilisateurs_; i++) {
-			listeTemp[i] = utilisateurs_[i];
-		}
-		delete[] utilisateurs_;
-
-		utilisateurs_ = listeTemp;
-	}
-	utilisateurs_[nombreUtilisateurs_++] = unUtilisateur;
+void Groupe::ajouterDepense(Depense* ptrNouvDepense, Utilisateur* ptrUtilisateur) {
+	//Ajout dépense au groupe.
+	nombreDepenses_++;
+	depenses_.push_back(ptrNouvDepense);
+	//Ajout dépense à l'utilisateur.
+	ptrUtilisateur += (ptrNouvDepense);
+	//Retourne le groupe.
+	return *this;
 }
 
 void Groupe::calculerComptes()
@@ -175,22 +139,24 @@ void Groupe::equilibrerComptes() {
 
 
 // Methode d'affichage
-void Groupe::afficherGroupe() const {
-	cout << "L'evenement " << nom_ << " a coute un total de " << getTotalDepenses() << " :  \n\n";
+
+ostream & operator<<(ostream & os, const Groupe & groupe)
+{
+	os << "L'evenement " << nom_ << " a coute un total de " << groupe.getTotalDepenses << " :  \n\n";
 	for (int i = 0; i < nombreUtilisateurs_; i++) {
-		utilisateurs_[i]->afficherUtilisateur();
+		os << utilisateurs_[i];
 	}
-	cout << endl;
+	os << endl;
 
 	if (nombreTransferts_ != 0) {
-		cout << "Les transferts suivants ont ete realiser pour equilibrer  : " << endl;
+		os << "Les transferts suivants ont ete realises pour equilibrer  : " << endl;
 		for (int i = 0; i < nombreTransferts_; i++) {
-			cout << "\t";
-			transferts_[i]->afficherTransfert();
+			os << "\t";
+			os << transferts_[i];
 		}
 	}
 	else {
-		cout << "Les comptes ne sont pas equilibres" << endl << endl;
+		os << "Les comptes ne sont pas equilibres" << endl << endl;
 	}
-	cout << endl;
+	os << endl;
 }
