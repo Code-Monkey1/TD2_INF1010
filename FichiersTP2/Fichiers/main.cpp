@@ -52,7 +52,7 @@ int main() {
 	cout << *u2 << *u3 << endl << transfert1;
 
 
-	
+	/*
 	// Initialisation du groupe
 	Groupe* groupe = new Groupe("vacances");
 
@@ -67,7 +67,7 @@ int main() {
 	cout << *groupe;
 
 	// TODO: Terminez le programme correctement
-	
+	*/
 	system("pause");
 	return 0;
 }
