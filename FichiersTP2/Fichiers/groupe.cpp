@@ -8,12 +8,6 @@
 
 // Constructeurs
 Groupe::Groupe() :
-	//nouveau
-	depenses_(),
-	utilisateurs_(),
-	transferts_(),
-	comptes_(),
-	//ancien
 	nom_(""),
 	nombreDepenses_(0),
 	nombreUtilisateurs_(0),
@@ -22,12 +16,6 @@ Groupe::Groupe() :
 }
 
 Groupe::Groupe(const string& nom) :
-	//nouveau
-	depenses_(),
-	utilisateurs_(),
-	transferts_(),
-	comptes_(),
-	//ancien
 	nom_(nom),
 	nombreDepenses_(0),
 	nombreUtilisateurs_(0),
@@ -35,10 +23,8 @@ Groupe::Groupe(const string& nom) :
 {
 }
 
-
 Groupe::~Groupe() {
 }
-
 
 // Methodes d'acces
 string Groupe::getNom() const {
