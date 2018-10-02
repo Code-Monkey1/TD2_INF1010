@@ -74,7 +74,7 @@ void Groupe::calculerComptes()
 {
 	double moyenne = getTotalDepenses() / nombreUtilisateurs_;
 	for (unsigned int i = 0; i < nombreUtilisateurs_; i++) {
-		comptes_[i] = ((utilisateurs_[i]->getTotalDepenses()) - moyenne);
+		comptes_.push_back(((utilisateurs_[i]->getTotalDepenses()) - moyenne));
 	}
 }
 
