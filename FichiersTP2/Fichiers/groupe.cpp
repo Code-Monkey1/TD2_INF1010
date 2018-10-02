@@ -85,8 +85,8 @@ void Groupe::equilibrerComptes() {
 	while (calcul) {
 		double max = 0;
 		double min = 0;
-		int indexMax = 0;
-		int indexMin = 0;
+		unsigned int indexMax = 0;
+		unsigned int indexMin = 0;
 
 		// On cherche le compte le plus eleve et le moins eleve
 		for (unsigned int i = 0; i < nombreUtilisateurs_; i++) {
