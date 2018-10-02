@@ -37,7 +37,7 @@ unsigned int Groupe::getNombreDepenses() const {
 
 double Groupe::getTotalDepenses() const {
 	double total = 0;
-	for (int i = 0; i < nombreDepenses_; i++) {
+	for (unsigned int i = 0; i < nombreDepenses_; i++) {
 		total += depenses_[i]->getMontant();
 	}
 	return total;
@@ -73,7 +73,7 @@ Groupe & Groupe::ajouterDepense(Depense* ptrNouvDepense, Utilisateur* ptrUtilisa
 void Groupe::calculerComptes()
 {
 	double moyenne = getTotalDepenses() / nombreUtilisateurs_;
-	for (int i = 0; i < nombreUtilisateurs_; i++) {
+	for (unsigned int i = 0; i < nombreUtilisateurs_; i++) {
 		comptes_[i] = ((utilisateurs_[i]->getTotalDepenses()) - moyenne);
 	}
 }
@@ -81,7 +81,7 @@ void Groupe::calculerComptes()
 void Groupe::equilibrerComptes() {
 	calculerComptes();
 	bool calcul = true;
-	int count = 0;
+	unsigned int count = 0;
 	while (calcul) {
 		double max = 0;
 		double min = 0;
@@ -89,7 +89,7 @@ void Groupe::equilibrerComptes() {
 		int indexMin = 0;
 
 		// On cherche le compte le plus eleve et le moins eleve
-		for (int i = 0; i < nombreUtilisateurs_; i++) {
+		for (unsigned int i = 0; i < nombreUtilisateurs_; i++) {
 			if (comptes_[i] > max) {
 				max = comptes_[i];
 				indexMax = i;
@@ -129,14 +129,14 @@ void Groupe::equilibrerComptes() {
 ostream & operator<<(ostream & os, const Groupe & groupe)
 {
 	os << "L'evenement " << groupe.getNom() << " a coute un total de " << groupe.getTotalDepenses() << " :  \n\n";
-	for (int i = 0; i < groupe.nombreUtilisateurs_; i++) {
+	for (unsigned int i = 0; i < groupe.nombreUtilisateurs_; i++) {
 		os << (*groupe.utilisateurs_[i]);
 	}
 	os << endl;
 
 	if (groupe.nombreTransferts_ != 0) {
 		os << "Les transferts suivants ont ete realises pour equilibrer  : " << endl;
-		for (int i = 0; i < groupe.nombreTransferts_; i++) {
+		for (unsigned int i = 0; i < groupe.nombreTransferts_; i++) {
 			os << "\t";
 			os << (*groupe.transferts_[i]);
 		}
